@@ -183,8 +183,10 @@ app.get('/api/download/:jobId/:type', async (req, res) => {
   }
 });
 
-// Ensure output directory exists
-fs.ensureDirSync(OUTPUT_BASE);
+// Ensure output directory exists (use /tmp on Vercel - read-only filesystem)
+if (!process.env.VERCEL) {
+  fs.ensureDirSync(OUTPUT_BASE);
+}
 
 function startServer(port) {
   if (port > 3010) {

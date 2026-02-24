@@ -17,7 +17,7 @@ const { rewriteHtml, rewriteCss } = require('./rewriter');
 const { generateWordPressTheme } = require('./wordpress');
 const { createZipFromDir } = require('./utils/zip');
 
-const OUTPUT_BASE = path.join(process.cwd(), 'output');
+const OUTPUT_BASE = process.env.VERCEL ? path.join('/tmp', 'output') : path.join(process.cwd(), 'output');
 
 /**
  * Run full clone job
