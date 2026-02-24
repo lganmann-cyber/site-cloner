@@ -2,8 +2,8 @@
  * Express server for Site Cloner API
  */
 
-// Puppeteer by default for hero images. Use --no-puppeteer for HTTP-only.
-if (process.argv.includes('--no-puppeteer')) {
+// Puppeteer by default for hero images. Disable on Vercel (no Chromium) or with --no-puppeteer.
+if (process.argv.includes('--no-puppeteer') || process.env.VERCEL) {
   process.env.PUPPETEER_DISABLE = '1';
 }
 
@@ -204,4 +204,8 @@ function startServer(port) {
   });
 }
 
-startServer(PORT);
+if (require.main === module) {
+  startServer(PORT);
+}
+
+module.exports = app;
