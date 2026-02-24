@@ -11,10 +11,16 @@ npm start
 
 Opens at **http://localhost:3000**
 
-**Default is HTTP-only** (no Chrome, no EPIPE). For JS-rendered sites:
+**Puppeteer is default** (hero images, carousels). For HTTP-only (faster, no Chrome):
 ```bash
-npm run start:puppeteer
+npm run start:http
 ```
+
+## Deploy to Vercel
+
+1. Push to GitHub, then [import the repo](https://vercel.com/new) in Vercel
+2. Deploy (no build command needed)
+3. **Note:** On Vercel, Puppeteer is disabled (HTTP-only mode) due to serverless limits. For full hero/carousel support, run locally or use Railway/Render.
 
 ## Usage
 
